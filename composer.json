@@ -24,5 +24,11 @@
         "phpunit/phpunit": "~4.0",
         "fabpot/php-cs-fixer": "^1.10",
         "mockery/mockery": "0.9.*"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "Trellis\\Clients\\": "src/"
+        }
     }
 }
