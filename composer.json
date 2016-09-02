@@ -1,5 +1,5 @@
 {
-    "name": "trellis/graph-client",
+    "name": "trellis/service-clients",
     "description": "Graph Http Client package that communicates domain service with the graph service",
     "keywords": ["domains", "service", "microservice", "graph", "client", "http"],
     "license": "MIT",
