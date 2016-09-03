@@ -13,7 +13,7 @@
         }
     ],
 
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
 
     "require": {
         "vinelab/assistant": "~1.2",
