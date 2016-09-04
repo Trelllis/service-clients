@@ -1,5 +1,5 @@
 {
-    "name": "trellis/graph-client",
+    "name": "trellis/service-clients",
     "description": "Graph Http Client package that communicates domain service with the graph service",
     "keywords": ["domains", "service", "microservice", "graph", "client", "http"],
     "license": "MIT",
@@ -13,7 +13,7 @@
         }
     ],
 
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
 
     "require": {
         "vinelab/assistant": "~1.2",
@@ -24,5 +24,11 @@
         "phpunit/phpunit": "~4.0",
         "fabpot/php-cs-fixer": "^1.10",
         "mockery/mockery": "0.9.*"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "Trellis\\Clients\\": "src/"
+        }
     }
 }
