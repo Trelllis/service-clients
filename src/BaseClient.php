@@ -31,7 +31,7 @@ abstract class BaseClient
 
     public function __call($method, $arguments)
     {
-        $arguments[0]['url'] = $this->getServiceHost().':'.$this->getServicePort().$arguments[0]['url'];
+        $arguments[0][0] = $this->getServiceHost().':'.$this->getServicePort().$arguments[0][0];
 
         $request = array_pop($arguments);
 
