@@ -25,11 +25,8 @@ abstract class BaseClient
         $this->client = $client;
     }
 
-    abstract protected function getServiceHost()
-    {
-    }
+    abstract protected function getServiceHost();
 
-    abstract protected function getServicePort()
-    {
-    }
+    abstract protected function getServicePort();
+
 }
