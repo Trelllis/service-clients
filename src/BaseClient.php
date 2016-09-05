@@ -25,8 +25,16 @@ abstract class BaseClient
         $this->client = $client;
     }
 
-    abstract protected function getServiceHost();
+    protected abstract function getServiceHost();
 
-    abstract protected function getServicePort();
+    protected abstract function getServicePort();
 
+    public function __call($method, $arguments)
+    {
+        $arguments[0]['url'] = $this->getServiceHost().':'.$this->getServicePort().$arguments[0]['url'];
+
+        $request = array_pop($arguments);
+
+        return $this->client->$method($request)->json();
+    }
 }
