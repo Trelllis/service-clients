@@ -31,10 +31,16 @@ abstract class BaseClient
 
     public function __call($method, $arguments)
     {
-        $arguments[0][0] = $this->getServiceHost().':'.$this->getServicePort().$arguments[0][0];
+        if (count($arguments) == 1) {
+            $arguments[0]['url'] = $this->getServiceHost().':'.$this->getServicePort().$arguments[0]['url'];
+            $request = array_pop($arguments);
 
-        $request = array_pop($arguments);
+            return $this->client->$method($request)->json();
+        } else {
+            $url = $this->getServiceHost().':'.$this->getServicePort().$arguments[0];
+            $request = ['url' => $url, 'params' => $arguments[1]];
 
-        return $this->client->$method($request)->json();
+            return $this->client->$method($request)->json();
+        }
     }
 }
