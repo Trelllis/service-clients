@@ -11,29 +11,22 @@
 
  namespace Trellis\Clients;
 
- use Vinelab\Http\Client as HttpClient;
+// use Vinelab\Http\Client as HttpClient;
  use Trellis\Clients\ServiceDomain;
 
  /**
  * @author Ali Issa <ali@vinelab.com>
  */
 
-class GraphClient{
+class GraphClient extends BaseClient {
 
-    private $client;
-
-    public function __construct(HttpClient $client)
+    public function getServiceHost()
     {
-        $this->client = $client;
+        return env('GRAPH_SERVICE_HOST');
     }
 
-    public function __call($method, $arguments)
+    public function getServicePort()
     {
-        $arguments[0]['url'] = ServiceDomain::GRAPH_Service_URL . $arguments[0]['url'];
-
-        $request = array_pop($arguments);
-
-        return $this->client->$method($request)->json();
+        return env('GRAPH_SERVICE_PORT');
     }
-
 }

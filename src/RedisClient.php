@@ -11,28 +11,20 @@
 
  namespace Trellis\Clients;
 
- use Vinelab\Http\Client as HttpClient;
-
  /**
  * @author Ali Issa <ali@vinelab.com>
  */
 
-class RedisClient{
+class RedisClient extends BaseClient {
 
-    private $client;
-
-    public function __construct(HttpClient $client)
+    public function getServiceHost()
     {
-        $this->client = $client;
+        return env('REDIS_SERVICE_HOST');
     }
 
-    public function __call($method, $arguments)
+    public function getServicePort()
     {
-        $arguments[0]['url'] = ServiceDomain::Redis_Service_URL . $arguments[0]['url'];
-
-        $request = array_pop($arguments);
-
-        return $this->client->$method($request)->json();
+        return env('REDIS_SERVICE_PORT');
     }
 
 }
